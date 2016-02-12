@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     {% include 'head.html.twig' %}
-
   </head>
   <body>
-
     {% include 'navbar.html.twig' %}
-
     <div class="container">
-
       {% include 'message.html.twig'%}
-
-      {% if form %}
-        {% include 'form.html.twig' %}
-      {% endif %}
-
-      {% if contacts %}
-        {% include 'contact.html.twig' %}
-      {% endif %}
-
-
+      {% include 'form.html.twig' %}
+      {% include 'contact.html.twig' %}
     </div>
-
   </body>
 </html>

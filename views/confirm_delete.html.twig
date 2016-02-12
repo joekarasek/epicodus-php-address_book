@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     {% include 'head.html.twig' %}
-
   </head>
   <body>
-
     {% include 'navbar.html.twig' %}
-
     <div class="container">
-
       <div class="alert alert-danger" role="alert">
         <h1>
           <strong>Warning!!!</strong> Delete all will permentantly remove all the contacts you've created. Are you sure you want to do this?
         </h1>
-      <form >
-        <button class="btn btn-danger" formmethod="post" formaction="/delete_all_contacts_success" type="submit">Delete All!</button>
-        <button class="btn btn-info" formmethod="get" formaction="/" type="submit">Never Mind</button>
-      </form>
+        <form >
+          <button class="btn btn-danger" formmethod="post" formaction="/delete_all_contacts_success" type="submit">Delete All!</button>
+          <button class="btn btn-info" formmethod="get" formaction="/" type="submit">Never Mind</button>
+        </form>
       </div>
-
     </div>
-
   </body>
 </html>

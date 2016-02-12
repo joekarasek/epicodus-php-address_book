@@ -16,8 +16,8 @@
         ));
 
 
-    // ======
-    // routes
+// ======
+// routes
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig', array(
             'contacts' => Contact::getAll()
@@ -52,9 +52,8 @@
     });
 
     $app->post("/delete_contact_success", function() use ($app) {
-        $contact_to_delete_ID = $_POST['delete_contact'];
         foreach($_SESSION['list_of_contacts'] as $key => $contact) {
-            if ($contact->getContactID() == $contact_to_delete_ID) { break; }
+            if ($contact->getContactID() == $_POST['delete_contact']) { break; }
         }
         $name_of_deleted = $_SESSION['list_of_contacts'][$key]->getFullName();
         $_SESSION['list_of_contacts'][$key]->deleteContact();
@@ -69,7 +68,7 @@
     });
 
     $app->get("/delete_all_contacts", function() use ($app) {
-      return $app['twig']->render('confirm_delete.html.twig');
+        return $app['twig']->render('confirm_delete.html.twig');
     });
 
     $app->post("/delete_all_contacts_success", function() use ($app) {
@@ -83,8 +82,6 @@
             )
         ));
     });
-
-
 
     return $app;
 ?>
