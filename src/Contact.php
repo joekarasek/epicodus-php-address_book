@@ -5,6 +5,7 @@
         private $first_name;
         private $last_name;
         private $email_address;
+        private $phone;
         private $street_address;
         private $city;
         private $state;
@@ -12,11 +13,12 @@
         private $notes;
 
         //Constructor
-        function __construct( $first_name , $last_name , $email_address , $street_address , $city , $state , $zip_code , $notes)
+        function __construct( $first_name , $last_name , $email_address , $phone , $street_address , $city , $state , $zip_code , $notes)
         {
             $this->first_name = $first_name;
             $this->last_name = $last_name;
             $this->email_address = $email_address;
+            $this->phone = $phone;
             $this->street_address = $street_address;
             $this->city = $city;
             $this->state = $state;
@@ -36,6 +38,10 @@
         function getEmailAddress()
         {
             return $this->email_address;
+        }
+        function getPhone()
+        {
+          return $this->phone;
         }
         function getStreetAddress()
         {
@@ -66,6 +72,10 @@
         function setLastName($last_name)
         {
             $this->last_name = $last_name;
+        }
+        function setPhone($phone)
+        {
+            $this->phone = $phone;
         }
         function setEmailAddress($email_address)
         {
@@ -102,6 +112,10 @@
         function getFullName()
         {
             return $this->first_name . " " . $this->last_name;
+        }
+        function saveContact()
+        {
+            array_push($_SESSION['list_of_contacts'], $this);
         }
 
     }
