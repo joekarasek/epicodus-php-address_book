@@ -11,9 +11,13 @@
 
     <div class="container">
 
-      {% include 'form.html.twig' %}
+      {% if form %}
+        {% include 'form.html.twig' %}
+      {% endif %}
 
-      {% include 'contact.html.twig' %}
+      {% if contacts %}
+        {% include 'contact.html.twig' %}
+      {% endif %}
 
     </div>
 

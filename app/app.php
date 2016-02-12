@@ -17,8 +17,18 @@
 
     // routes
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array(
+            'contacts' => Contact::getAll()
+        ));
     });
+
+    $app->get("/add_contact", function() use ($app) {
+        return $app['twig']->render('index.html.twig', array(
+            'form' => true
+        ));
+    });
+
+
 
     return $app;
 ?>
