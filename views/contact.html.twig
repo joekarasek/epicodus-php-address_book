@@ -1,15 +1,17 @@
+{% for contact in contacts %}
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Contact name</h3>
+    <h3 class="panel-title">{% contact.getFullName %}</h3>
   </div>
   <div class="panel-body">
-    Contact info <br>
-    More info <br>
-    email_address <br>
-    and more here
-
-    <hr>
-    notes go here
-
+    <span class="label label-default">Phone:  </span>{% contact.getEmailAddress %}<br>
+    <span class="label label-default">Phone:  </span>{% contact.getPhone %}<br>
+    <span class="label label-default">Address:</span>{% contact.getStreetAddress %}<br>
+    <span class="label label-default">        </span>{% contact.getCity %}, {% contact.getState %} {% contact.getZipCode %}<br>
+    {% if contact.getNotes %}
+      <hr>
+      <p>{% contact.getNotes %}</p>
+    {% endif %}
   </div>
 </div>
+{% endfor %}
