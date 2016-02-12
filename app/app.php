@@ -61,6 +61,14 @@
       return $app['twig']->render('confirm_delete.html.twig');
     });
 
+    $app->post("/delete_all_contacts_success", function() use ($app) {
+        Contact::deleteAll();
+
+        return $app['twig']->render('index.html.twig', array(
+            'contacts' => Contact::getAll()
+        ));
+    });
+
 
 
     return $app;
