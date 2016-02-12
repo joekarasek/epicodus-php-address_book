@@ -25,7 +25,7 @@
             $this->state = $state;
             $this->zip_code = $zip_code;
             $this->notes = $notes;
-            $this->contact_id = rand(1000000,999999);
+            $this->contact_id = rand(1000000,9999999);
         }
 
         // Getters
