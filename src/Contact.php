@@ -92,5 +92,17 @@
             $this->notes = $notes;
         }
 
+        // static funcitons
+        static function getAll()
+        {
+            return $_SESSION['list_of_contacts'];
+        }
+
+        // additional functions
+        function getFullName()
+        {
+            return $this->first_name . " " . $this->last_name;
+        }
+
     }
 ?>
