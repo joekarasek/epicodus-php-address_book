@@ -1,16 +1,30 @@
 {% for contact in contacts %}
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{ contact.getFullName }}</h3>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+
+        {% if delete %}
+          <form action="/delete_contact_success" method="post">
+          <button class="btn btn-danger" name='delete_contact' value='{{ contact.getContactID }}'><span class="glyphicon glyphicon-remove"> DELETE : {{ contact.getFullName }}</span></button>
+          </form>
+        {% else %}
+          {{ contact.getFullName }}
+        {% endif %}
+
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <span class="label label-default">Phone:</span>  {{ contact.getEmailAddress }}<br>
+      <span class="label label-default">Phone:</span>  {{ contact.getPhone }}<br>
+      <span class="label label-default">Address:</span><br>{{ contact.getStreetAddress }}<br>{{ contact.getCity }}, {{ contact.getState }} {{ contact.getZipCode }}<br>
+
+      {% if contact.getNotes %}
+        <hr>
+        <p>{{ contact.getNotes }}</p>
+      {% endif %}
+
+    </div>
   </div>
-  <div class="panel-body">
-    <span class="label label-default">Phone:</span>  {{ contact.getEmailAddress }}<br>
-    <span class="label label-default">Phone:</span>  {{ contact.getPhone }}<br>
-    <span class="label label-default">Address:</span><br>{{ contact.getStreetAddress }}<br>{{ contact.getCity }}, {{ contact.getState }} {{ contact.getZipCode }}<br>
-    {% if contact.getNotes %}
-      <hr>
-      <p>{{ contact.getNotes }}</p>
-    {% endif %}
-  </div>
-</div>
 {% endfor %}

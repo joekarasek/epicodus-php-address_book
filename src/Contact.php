@@ -11,6 +11,7 @@
         private $state;
         private $zip_code;
         private $notes;
+        private $contact_id;
 
         //Constructor
         function __construct( $first_name , $last_name , $email_address , $phone , $street_address , $city , $state , $zip_code , $notes)
@@ -24,6 +25,7 @@
             $this->state = $state;
             $this->zip_code = $zip_code;
             $this->notes = $notes;
+            $this->contact_id = rand(1000000,999999);
         }
 
         // Getters
@@ -62,6 +64,10 @@
         function getNotes()
         {
             return $this->notes;
+        }
+        function getContactID()
+        {
+            return $this->contact_id;
         }
 
         //Setters
@@ -116,6 +122,11 @@
         function saveContact()
         {
             array_push($_SESSION['list_of_contacts'], $this);
+        }
+        function deleteContact()
+        {
+            $contact_key = array_search($this, $_SESSION['list_of_contacts']);
+            unset($_SESSION['list_of_contacts'][$contact_key]);
         }
 
     }

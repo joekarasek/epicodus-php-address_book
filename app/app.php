@@ -38,6 +38,25 @@
         ));
     });
 
+    $app->get("/delete_contact", function() use ($app) {
+        return $app['twig']->render('index.html.twig', array(
+            'contacts' => Contact::getAll(),
+            'delete' => true
+        ));
+    });
+
+    $app->post("/delete_contact_success", function() use ($app) {
+        $contact_to_delete_ID = $_POST['delete_contact'];
+        foreach($_SESSION['list_of_contacts'] as $key => $contact) {
+            if ($contact->getContactID() == $contact_to_delete_ID) { break; }
+        }
+        $_SESSION['list_of_contacts'][$key]->deleteContact();
+
+        return $app['twig']->render('index.html.twig', array(
+            'contacts' => Contact::getAll()
+        ));
+    });
+
 
 
     return $app;
