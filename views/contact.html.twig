@@ -16,9 +16,9 @@
     </div>
 
     <div class="panel-body">
-      <span class="label label-default">Phone:</span>  {{ contact.getEmailAddress }}<br>
-      <span class="label label-default">Phone:</span>  {{ contact.getPhone }}<br>
-      <span class="label label-default">Address:</span><br>{{ contact.getStreetAddress }}<br>{{ contact.getCity }}, {{ contact.getState }} {{ contact.getZipCode }}<br>
+      <span class="label label-info">Email:</span><br>  {{ contact.getEmailAddress }}<br>
+      <span class="label label-info">Phone:</span><br>  {{ contact.getPhone }}<br>
+      <span class="label label-info">Address:</span><br>{{ contact.getStreetAddress }}<br>{{ contact.getCity }}, {{ contact.getState }} {{ contact.getZipCode }}<br>
 
       {% if contact.getNotes %}
         <hr>
