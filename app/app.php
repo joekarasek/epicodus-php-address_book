@@ -57,6 +57,10 @@
         ));
     });
 
+    $app->get("/delete_all_contacts", function() use ($app) {
+      return $app['twig']->render('confirm_delete.html.twig');
+    });
+
 
 
     return $app;
