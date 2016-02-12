@@ -28,6 +28,15 @@
         ));
     });
 
+    $app->post("/add_contact_success", function() use ($app) {
+      $new_contact = new Contact($_POST['first_name'] , $_POST['last_name'] , $_POST['email'] , $_POST['phone'] , $_POST['street_address'] , $_POST['city'] , $_POST['state'] , $_POST['zip_code'] , $_POST['notes']);
+      $new_contact->saveContact();
+
+      return $app['twig']->render('index.html.twig', array(
+          'contacts' => Contact::getAll()
+      ));
+    });
+
 
 
     return $app;
