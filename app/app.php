@@ -15,6 +15,8 @@
         'twig.path' => __DIR__.'/../views'
         ));
 
+
+    // ======
     // routes
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig', array(
@@ -34,7 +36,11 @@
 
 
         return $app['twig']->render('index.html.twig', array(
-            'contacts' => Contact::getAll()
+            'contacts' => Contact::getAll(),
+            'message' => array(
+                'type' => 'success',
+                'text' => $new_contact->getFullName() . ' has been added to your address book.'
+            )
         ));
     });
 
@@ -50,10 +56,15 @@
         foreach($_SESSION['list_of_contacts'] as $key => $contact) {
             if ($contact->getContactID() == $contact_to_delete_ID) { break; }
         }
+        $name_of_deleted = $_SESSION['list_of_contacts'][$key]->getFullName();
         $_SESSION['list_of_contacts'][$key]->deleteContact();
 
         return $app['twig']->render('index.html.twig', array(
-            'contacts' => Contact::getAll()
+            'contacts' => Contact::getAll(),
+            'message' => array(
+                'type' => 'danger',
+                'text' => $name_of_deleted . ' has been successfully removed from your address book.'
+            )
         ));
     });
 
@@ -65,7 +76,11 @@
         Contact::deleteAll();
 
         return $app['twig']->render('index.html.twig', array(
-            'contacts' => Contact::getAll()
+            'contacts' => Contact::getAll(),
+            'message' => array(
+                'type' => 'danger',
+                'text' => 'What have you done!?! All your contacts are gone...'
+            )
         ));
     });
 
